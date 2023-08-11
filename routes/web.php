@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TaskControlller;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -16,13 +17,7 @@ use Illuminate\Support\Facades\Validator;
 |
 */
 
-Route::get('/', function () {
-    $tasks = Task::orderBy('created_at', 'asc')->get();
-    
-    return view('tasks', [
-        'tasks' => $tasks
-    ]);
-});
+Route::get('/', [TaskControlller::class,"tasks"]);
 
 /**
  * Add a New Task
